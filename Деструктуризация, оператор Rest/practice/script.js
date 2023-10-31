@@ -4,6 +4,7 @@ const root = document.getElementById('root')
 const popup = document.getElementById('popup')
 const textInput = document.getElementById('text-input')
 const form = document.getElementById('form')
+const close = document.getElementById('close')
 
 const cityList = {
   minsk: 'Minsk',
@@ -17,15 +18,13 @@ const { minsk, moscow, newYork, losAngeles, london } = cityList
 
 let store = {
   city: losAngeles,
-  // feelslike: 0,
 }
 
 const fetchData = async () => {
   try {
-    const result = await fetch(`${link}&query=${store.city}`)
+    const query = localStorage.getItem('query') || store.city
+    const result = await fetch(`${link}&query=${query}`)
     const data = await result.json()
-
-    console.log(data)
 
     const {
       current: { feelslike_c: feelslike, cloud, temp_c: temperature, condition, is_day: isDay, humidity, wind_kph: windSpeed, pressure_mb: pressure, uv: uvIndex, vis_km: visibility },
@@ -170,12 +169,16 @@ const handleInput = e => {
 
 const handleSubmit = e => {
   e.preventDefault()
+  const value = store.city
 
-  if (!!store.city) return
+  if (!value) return null
 
+  localStorage.setItem('query', value)
   fetchData()
   togglePopupClass()
 }
+
+close.onclick = () => togglePopupClass()
 
 form.addEventListener('submit', handleSubmit)
 textInput.addEventListener('input', handleInput)
