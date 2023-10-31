@@ -16,64 +16,68 @@ const cityList = {
 const { minsk, moscow, newYork, losAngeles, london } = cityList
 
 let store = {
-  city: london,
+  city: losAngeles,
   // feelslike: 0,
 }
 
 const fetchData = async () => {
-  const result = await fetch(`${link}&query=${store.city}`)
-  const data = await result.json()
+  try {
+    const result = await fetch(`${link}&query=${store.city}`)
+    const data = await result.json()
 
-  console.log(data)
+    console.log(data)
 
-  const {
-    current: { feelslike_c: feelslike, cloud, temp_c: temperature, condition, is_day: isDay, humidity, wind_kph: windSpeed, pressure_mb: pressure, uv: uvIndex, vis_km: visibility },
-    location: { name: city, country, localtime },
-  } = data
+    const {
+      current: { feelslike_c: feelslike, cloud, temp_c: temperature, condition, is_day: isDay, humidity, wind_kph: windSpeed, pressure_mb: pressure, uv: uvIndex, vis_km: visibility },
+      location: { name: city, country, localtime },
+    } = data
 
-  store = {
-    feelslike,
-    city,
-    cloud,
-    temperature,
-    country,
-    localtime,
-    isDay,
-    condition: condition.text,
-    properties: {
-      cloud: {
-        title: 'cloudcover',
-        value: `${cloud}%`,
-        icon: 'cloud.png',
+    store = {
+      feelslike,
+      city,
+      cloud,
+      temperature,
+      country,
+      localtime,
+      isDay,
+      condition: condition.text,
+      properties: {
+        cloud: {
+          title: 'cloudcover',
+          value: `${cloud}%`,
+          icon: 'cloud.png',
+        },
+        humidity: {
+          title: 'humidity',
+          value: `${humidity}%`,
+          icon: 'humidity.png',
+        },
+        windSpeed: {
+          title: 'wind speed',
+          value: `${windSpeed} km/h`,
+          icon: 'wind.png',
+        },
+        pressure: {
+          title: 'pressure',
+          value: `${pressure} %`,
+          icon: 'gauge.png',
+        },
+        uvIndex: {
+          title: 'uv Index',
+          value: `${uvIndex} / 100`,
+          icon: 'uv-index.png',
+        },
+        visibility: {
+          title: 'visibility',
+          value: `${visibility}km/h`,
+          icon: 'visibility.png',
+        },
       },
-      humidity: {
-        title: 'humidity',
-        value: `${humidity}%`,
-        icon: 'humidity.png',
-      },
-      windSpeed: {
-        title: 'wind speed',
-        value: `${windSpeed} km/h`,
-        icon: 'wind.png',
-      },
-      pressure: {
-        title: 'pressure',
-        value: `${pressure} %`,
-        icon: 'gauge.png',
-      },
-      uvIndex: {
-        title: 'uv Index',
-        value: `${uvIndex} / 100`,
-        icon: 'uv-index.png',
-      },
-      visibility: {
-        title: 'visibility',
-        value: `${visibility}km/h`,
-        icon: 'visibility.png',
-      },
-    },
+    }
+    renderComponent()
+  } catch (err) {
+    console.log(err)
   }
-  renderComponent()
 }
 
 const getImage = description => {
@@ -146,7 +150,7 @@ const murkUp = () => {
   `
 }
 
-const toggleClass = () => {
+const togglePopupClass = () => {
   popup.classList.toggle('active')
 }
 
@@ -154,7 +158,26 @@ const renderComponent = () => {
   root.innerHTML = `${murkUp()}`
 
   const city = document.getElementById('city')
-  city.addEventListener('click', toggleClass)
+  city.addEventListener('click', togglePopupClass)
 }
+
+const handleInput = e => {
+  store = {
+    ...store,
+    city: e.target.value,
+  }
+}
+
+const handleSubmit = e => {
+  e.preventDefault()
+
+  if (!!store.city) return
+
+  fetchData()
+  togglePopupClass()
+}
+
+form.addEventListener('submit', handleSubmit)
+textInput.addEventListener('input', handleInput)
 
 fetchData()
