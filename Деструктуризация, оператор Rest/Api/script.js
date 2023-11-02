@@ -14,7 +14,8 @@ const fetchData = async () => {
 
     store = { ...data }
 
-    renderContent()
+    console.log(store)
+    // renderContent()
   } catch (error) {
     console.log(error)
   }
@@ -40,21 +41,36 @@ const renderContent = () => {
 }
 
 const handleInput = e => {
+  let coin = e.target.value
+
   store = {
     ...store,
-    coin: e.target.value,
+    coin,
   }
+}
 
-  console.log(store)
+const f1 = info => {
+  console.log(info)
 }
 
 const handleSubmit = e => {
   e.preventDefault()
   const value = store.coin
-  console.log(value)
+  if (!value) return null
+
+  for (let key in store) {
+    const value = store[key]
+    const coin = store.coin.toLowerCase()
+
+    if (!value.name) return null
+
+    if (value.name.toLowerCase() === coin) {
+      f1(value)
+    }
+  }
 }
 
-form.addEventListener('submit', handleSubmit)
-textInput.addEventListener('click', handleInput)
+// form.addEventListener('submit', handleSubmit)
+// textInput.addEventListener('input', handleInput)
 
-fetchData()
+// fetchData()

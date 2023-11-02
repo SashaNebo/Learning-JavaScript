@@ -5,20 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <form action="GET" class="form" id="form">
+  <!-- <form action="GET" class="form" id="form">
     <div class="form-group">
       <input type="text" value="" name="coin" class="form-input" id="text-input" placeholder="Coin" required />
       <input type="submit" class="form-submit" id="submit-button" value="OK" />
     </div>
-  </form>
+  </form> -->
 
-  <div class="container" id='container'>
-  </div>
+
+  <header class="header">
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="main-content">
+        <div class="main-content-top">
+          <div class="ranked">#</div>
+          <div class="name">Name</div>
+          <div class="price">Price</div>
+          <div class="market-cap">Market Cap</div>
+        </div>
+        <div class="main-content-middle" id='coins'>
+          <div class="ranked">1</div>
+          <div class="name">Bitcoin</div>
+          <div class="price">$34,831.34</div>
+          <div class="market-cap">$680,374,693,352</div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>

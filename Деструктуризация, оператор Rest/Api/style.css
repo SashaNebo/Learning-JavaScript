@@ -1,6 +1,24 @@
+.main {
+  margin: 100px 0;
+}
+
 .container {
-  padding-top: 300px;
-  display: flex;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  background: #0B1F65;
+  border-radius: 20px;
+}
+
+.main-content {
+  padding: 60px 40px;
+}
+
+.main-content-top,
+.main-content-middle {
+  /* display: flex;
   justify-content: space-around;
-  flex-direction: column;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
