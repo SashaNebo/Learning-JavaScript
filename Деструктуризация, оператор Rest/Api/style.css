@@ -3,22 +3,48 @@
 }
 
 .container {
-  width: 100%;
-  max-width: 1500px;
+  width: 90%;
+  max-width: 1300px;
   margin: 0 auto;
-  background: #0B1F65;
+  background: #000;
   border-radius: 20px;
 }
 
 .main-content {
   padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
 .main-content-top,
 .main-content-middle {
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.main-content-coin {
+  display: grid;
+  grid-template-columns: 3% 37% 30% 30%;
+  padding: 20px;
+  background: #170B3B;
+  border-radius: 15px;
+}
+
+.main-content-coin:first-child {
+  background: none;
+}
+
+.main-content-coin .ranked,
+.name,
+.price,
+.market-cap {
+  font-size: 17px;
+  color: #fff;
+}
+
+.main-content-coin .name span {
+  padding-left: 10px;
+  font-size: 16px;
+  opacity: .6;
 }

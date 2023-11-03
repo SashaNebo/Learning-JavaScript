@@ -1,6 +1,6 @@
 const link = 'https://api.coincap.io/v2/assets'
 
-const container = document.getElementById('container')
+const container = document.getElementById('coins')
 const form = document.getElementById('form')
 const textInput = document.getElementById('text-input')
 
@@ -15,7 +15,7 @@ const fetchData = async () => {
     store = { ...data }
 
     console.log(store)
-    // renderContent()
+    renderContent()
   } catch (error) {
     console.log(error)
   }
@@ -27,13 +27,16 @@ const renderContent = () => {
   for (let key in store) {
     const info = store[key]
 
+    const price = (+info.priceUsd).toFixed(2)
+    const marketCap = (+info.marketCapUsd).toFixed(2)
+
     const contentHTML = `
-    <div>
-    <span>${info.rank}.</span>
-    <span>${info.name}</span>
-    <span>${info.priceUsd}$</span>
+    <div class="main-content-coin">
+      <div class="ranked">${info.rank}</div>
+      <div class="name">${info.name} <span>${info.symbol}</span></div>
+      <div class="price">$${price}</div>
+      <div class="market-cap">$${marketCap}</div>
     </div>
-    <br>
     `
 
     container.insertAdjacentHTML('beforeend', contentHTML)
