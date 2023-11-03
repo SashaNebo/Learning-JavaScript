@@ -12,16 +12,17 @@
 
 <body>
 
-  <!-- <form action="GET" class="form" id="form">
-    <div class="form-group">
-      <input type="text" value="" name="coin" class="form-input" id="text-input" placeholder="Coin" required />
-      <input type="submit" class="form-submit" id="submit-button" value="OK" />
+  <div class="header">
+    <div class="form-container">
+      <form action="GET" class="form" id="form">
+        <div class="form-group">
+          <input type="text" value="" name="coin" class="form-input" id="text-input" placeholder="Coin" required autocomplete='off' />
+          <input type="submit" class="form-submit" id="submit-button" value="OK" />
+        </div>
+      </form>
     </div>
-  </form> -->
+  </div>
 
-
-  <header class="header">
-  </header>
 
   <main class="main">
     <div class="container">
@@ -32,38 +33,31 @@
           <div class="price">Price</div>
           <div class="market-cap">Market Cap</div>
         </div>
-
-        <!-- <div class="main-content-coin">
-          <div class="ranked">1</div>
-          <div class="name">Bitcoin</div>
-          <div class="price">$34,831.34</div>
-          <div class="market-cap">$680,374,693,352</div>
-        </div>
-
-        <div class="main-content-coin">
-          <div class="ranked">1</div>
-          <div class="name">Bitcoin</div>
-          <div class="price">$34,831.34</div>
-          <div class="market-cap">$680,374,693,352</div>
-        </div>
-
-        <div class="main-content-coin">
-          <div class="ranked">1</div>
-          <div class="name">Bitcoin</div>
-          <div class="price">$34,831.34</div>
-          <div class="market-cap">$680,374,693,352</div>
-        </div>
-
-        <div class="main-content-coin">
-          <div class="ranked">1</div>
-          <div class="name">Bitcoin</div>
-          <div class="price">$34,831.34</div>
-          <div class="market-cap">-</div>
-        </div> -->
       </div>
     </div>
     </div>
   </main>
+
+  <div class="modal">
+    <div class="modal-content">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptatem assumenda dicta quia neque nisi debitis omnis, tempore architecto quidem veritatis aperiam maxime accusantium quos pariatur quas perspiciatis ab delectus?</p>
+    </div>
+  </div>
+
+
+  <!-- 
+
+
+
+    rank Name Symbol ---------------------  Price (fz=24px)
+
+    marketCapUsd 
+    maxSupply      --------------------- supply
+    volumeUsd24Hr  -------------------- volumeUsd24Hr ------changePercent24Hr
+
+
+                Button more info  explorer
+   -->
 
   <script src="script.js"></script>
 </body>

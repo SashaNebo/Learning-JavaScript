@@ -73,7 +73,7 @@ const handleSubmit = e => {
   }
 }
 
-// form.addEventListener('submit', handleSubmit)
-// textInput.addEventListener('input', handleInput)
+form.addEventListener('submit', handleSubmit)
+textInput.addEventListener('input', handleInput)
 
 // fetchData()

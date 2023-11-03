@@ -1,5 +1,50 @@
+.header {
+  margin-top: 100px;
+}
+
+.form-container {
+  width: 90%;
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+  /* background: #aca2a2; */
+  border-radius: 20px;
+}
+
+.form {
+  padding: 15px;
+  background: #000;
+  border-radius: 10px;
+}
+
+.form-input {
+  color: #fff;
+  background: transparent;
+  outline: none;
+  padding: 4px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.form-input::change {
+  background: transparent;
+}
+
+.form-submit {
+  background: #170B3B;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 7px;
+  border-radius: 5px;
+}
+
+/* Main */
+
 .main {
-  margin: 100px 0;
+  margin: 50px 0 100px;
 }
 
 .container {
@@ -47,4 +92,26 @@
   padding-left: 10px;
   font-size: 16px;
   opacity: .6;
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 60%;
+  max-width: 950px;
+  background: #000;
 }
