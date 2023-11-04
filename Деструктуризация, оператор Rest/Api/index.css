@@ -25,6 +25,7 @@ button {
 
 a {
   text-decoration: none;
+  color: #fff;
 }
 
 ul,
@@ -32,4 +33,20 @@ li {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.gold {
+  background: #FFD700;
+}
+
+.silver {
+  background: #C0C0C0;
+}
+
+.bronze {
+  background: #cd7f32;
+}
+
+.default {
+  background: #170B3B;
 }
