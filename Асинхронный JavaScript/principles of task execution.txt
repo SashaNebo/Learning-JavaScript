@@ -2,9 +2,16 @@
 2. Выполняются все микрозадачи 
 3. Выполняется одна макрозадача 
 4. Повторно выполняются все (вновь) добавленные задачи 
-5. Выполняется следующаю микрозадача 
+5. Выполняется следующаю макрозадача 
 6. Цикл повторяется
 
-микрозадачи - Promise, async/await, ObjectObserver, MutationObserver, process.nextTick.
+Micro Tasks:
+1. Промисы (async/await, then) (99%)
+2. queveMicrotask 
+3. MutationObserver, ObjectObserver
+4. Process.nextTick.
 
-макрозадачи - setTimeout, setInterval и XHR.
+Macro Tasks:
+1. Таймеры (setTimeout, setInterval и XHR)
+2. События (клик, загрузка изображения и т.д)
+3. Брауазерные нюансы (рендер, I/O и т.д)
