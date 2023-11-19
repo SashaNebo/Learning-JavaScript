@@ -1,9 +1,9 @@
 import { renderResult } from './markups.js'
 import state from './state.js'
-import { formatToCurrency, getFullTitle } from './utils.js'
+import { convertTime, formatToCurrency, getFullTitle } from './utils.js'
 import variables from './variables.js'
 
-const { success, formResults, rateConversion } = variables
+const { success, formResults, rateConversion, rateLast, toSelect, fromSelect } = variables
 
 export const handleChange = ({ target: { value, name } }) => {
   state.pair = {
@@ -36,6 +36,7 @@ const inserResults = ({ base_code: baseCode, target_code: targetCode, conversion
   const targetValue = formatToCurrency(targetCode, rate)
 
   rateConversion.innerText = `${baseValue} = ${targetValue}`
+  rateLast.innerText = `Last updated ${convertTime(time)}`
 
   formResults.classList.add('show')
 }
@@ -61,4 +62,20 @@ export const handleSubmit = async e => {
   } catch (err) {
     console.log(err)
   }
+}
+
+export const switchCurrencies = () => {
+  const {
+    pair: { to, from },
+  } = state
+
+  if (!to || !from) return
+
+  state.pair = {
+    to: from,
+    from: to,
+  }
+
+  toSelect.value = from
+  fromSelect.value = to
 }

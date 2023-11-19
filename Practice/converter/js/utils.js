@@ -10,3 +10,13 @@ export const formatToCurrency = (code, amount) => {
     maximumFractionDigits: 2,
   }).format(amount)
 }
+
+export const convertTime = data => {
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+
+  return new Intl.DateTimeFormat('en-US', options).format(new Date(data))
+}

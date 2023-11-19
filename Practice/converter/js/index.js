@@ -1,8 +1,9 @@
 import variables from './variables.js'
 import state from './state.js'
 import { handleChange } from './convert.js'
+import { fetchLatest } from './single.js'
 
-const { selects, success } = variables
+const { selects, success, tabs } = variables
 
 const renderCodeList = () => {
   selects.forEach(select => {
@@ -13,7 +14,8 @@ const renderCodeList = () => {
       select.insertAdjacentElement('beforeend', element)
     })
 
-    select.addEventListener('change', handleChange)
+    const name = select.getAttribute('name')
+    name && select.addEventListener('change', handleChange)
   })
 }
 
@@ -25,8 +27,26 @@ export const fetchCodes = async () => {
     if (data.result === success) {
       state.codes = data.supported_codes
       renderCodeList()
+      fetchLatest()
     }
   } catch (err) {
     console.log(err)
   }
+}
+
+export const handleTabClick = ({ currentTarget: target }) => {
+  const { tab } = target.dataset
+  const children = document.querySelectorAll('.content')
+
+  if (!tab || tab === state.tab) return
+
+  tabs.forEach(item => item.classList.remove('active'))
+  target.classList.add('active')
+
+  for (const child of children) {
+    if (child.dataset.child === tab) child.classList.add('show')
+    else child.classList.remove('show')
+  }
+
+  state.currentTab = tab
 }
