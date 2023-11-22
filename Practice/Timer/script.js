@@ -1,4 +1,4 @@
-const date = 'Mon Jan 01 2024 00:00:00 GMT+0300 (Москва, стандартное время)'
+const date = 'Thu Feb 01 2024 00:00:00 GMT+0300 (Москва, стандартное время)'
 const today = new Date() // Any format
 
 const getTimerValues = diff => ({

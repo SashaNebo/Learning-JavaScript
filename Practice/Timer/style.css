@@ -1,5 +1,6 @@
 body {
   font-family: 'Rubik', sans-serif;
+  background: #000;
 }
 
 .timer {
@@ -7,9 +8,6 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
-  background: aquamarine;
-  border-radius: 10px;
 }
 
 .timer-title {
@@ -30,11 +28,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   column-gap: 20px;
 }
 
 .timer-box .time {
-  font-size: 56px;
+  font-size: 76px;
   font-weight: medium;
+  color: #fff;
 }

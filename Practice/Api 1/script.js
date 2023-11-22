@@ -161,6 +161,7 @@ const renderComponent = () => {
 }
 
 const handleInput = e => {
+  console.log(1)
   store = {
     ...store,
     city: e.target.value,
@@ -169,6 +170,7 @@ const handleInput = e => {
 
 const handleSubmit = e => {
   e.preventDefault()
+  console.log(2)
   const value = store.city
 
   if (!value) return null
