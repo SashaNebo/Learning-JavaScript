@@ -22,18 +22,26 @@
       <div class="sidebar">
         <nav class="sideabar-nav">
           <ul class="sideabar-nav__links">
-            <li><a href="#" class="nav-link">Home</a></li>
-            <li><a href="#" class="nav-link">Expense</a></li>
-            <li><a href="#" class="nav-link">Convert</a></li>
-            <li><a href="#" class="nav-link">Chart</a></li>
+            <li class='tab-button tab-button_active' id='tab-button-expense'>
+              <div class="nav-link">Expense</div>
+            </li>
+            <li class='tab-button' id='tab-button-convert'>
+              <div class="nav-link">Convert</div>
+            </li>
+            <li class='tab-button' id='tab-button-chart'>
+              <div class="nav-link">Chart</div>
+            </li>
+            <li class='tab-button' id='tab-button-home'>
+              <div class="nav-link">Home</div>
+            </li>
           </ul>
         </nav>
       </div>
 
-      <main class="main">
-        <div class="expense">
+      <main class="main" id='main'>
+        <div class="expense" id='expense' data-active="active-tab">
           <div class="expense-container">
-            <div class="expense-content">
+            <div class="expense-content" id='expense-content'>
               <div class="expense-field">
                 <div class="expense-field__info">№</div>
                 <div class="expense-field__info">Category</div>
@@ -41,7 +49,7 @@
                 <div class="expense-field__info">Date</div>
               </div>
 
-              <div class="expense-field">
+              <!-- <div class="expense-field">
                 <div class="expense-field__info">1</div>
                 <div class="expense-field__info">Product</div>
                 <div class="expense-field__info">$1200</div>
@@ -59,11 +67,10 @@
                 <button class="expense-field__button expense-field__button_info">More Info</button>
                 <button class="expense-field__button expense-field__button_edit">Edit</button>
                 <button class="expense-field__button expense-field__button_remove">Remove</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
-
         <div class="note none" id='form'>
           <div class="note-container">
             <form action="GET" class="note-form">
@@ -75,16 +82,14 @@
                 <option class='note-form__input-option' value="other">Other</option>
               </select>
               <input type="number" class='note-form__input note-form__input_sum' id='note-input' data-id="input-value" placeholder='amount' autocomplete='off' required>
-              <input type="datetime-local" class='note-form__input note-form__input_date' id='note-input' data-id="input-date" required>
-              <textarea resize='none' class='note-form__input note-form__input_txt' name="note-input" id="note-input" cols="30" rows="3"></textarea>
+              <input type="datetime-local" class='note-form__input note-form__input_date' id='note-input' data-id="input-date">
+              <!-- <textarea resize='none' class='note-form__input note-form__input_txt' name="note-input" id="note-input" cols="30" rows="2"></textarea> -->
               <input class='note-form__submit' type="submit" id='input-submit' value='OKEY' required>
             </form>
           </div>
         </div>
+      </main>
     </div>
-
-
-    </main>
 
     <div class="put" id='put'>
       <div class="put__txt">+</div>

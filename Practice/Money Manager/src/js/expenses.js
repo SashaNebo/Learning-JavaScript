@@ -1,23 +1,32 @@
-import variables from './variables.js'
-import { data, mark } from '../index.js'
+import { elementDOM_var, expense_var } from './variables.js'
 
-const { listContainer, noteForm, allNoteInput, put, overlay } = variables
+const { put, overlay } = elementDOM_var
+const { noteForm, allNoteInput, removeButton } = expense_var
 
-function handleFormSubmit(e) {
+export let dataNote = []
+
+const mark = {
+  id: 0,
+  category: '',
+  value: 0,
+  date: '',
+}
+
+function handleNoteForm(e) {
   e.preventDefault()
-  data.push(mark)
+  dataNote.push({ ...mark })
   allNoteInput.forEach(input => (input.value = ''))
-  renderNoteList(mark)
+  addMark(mark)
   openNote()
 }
 
-function handleInput() {
+function handleNoteInput() {
   switch (this.dataset.id) {
+    case 'input-category':
+      mark.category = this.value
+      break
     case 'input-value':
       mark.value = this.value
-      break
-    case 'input-description':
-      mark.description = this.value
       break
     case 'input-date':
       mark.date = new Date(this.value).toLocaleString()
@@ -27,17 +36,26 @@ function handleInput() {
   mark.id = Date.now()
 }
 
-function renderNoteList(mark) {
-  // const { value, description, date, id } = mark
-  // const listItemHTML = `
-  //   <div class="list-item" data-id="${id}">
-  //     <div class="number">${data.length}.</div>
-  //     <div class="description">${description}</div>
-  //     <div class="date">${date}</div>
-  //     <div class="value">$${value}</div>
-  //   </div>
-  // `
-  // listContainer.insertAdjacentHTML('beforeend', listItemHTML)
+function addMark(mark) {
+  const expenseContent = document.getElementById('expense-content')
+  const { id, category, value, date } = mark
+
+  if (!expenseContent) return
+
+  const markHTML = `
+    <div class="expense-field" id="${id}">
+      <div class="expense-field__info" id="place">${dataNote.length}</div>
+      <div class="expense-field__info">${category}</div>
+      <div class="expense-field__info">$${value}</div>
+      <div class="expense-field__info">${date}</div>
+      <button class="expense-field__button expense-field__button_info">More Info</button>
+      <button class="expense-field__button expense-field__button_edit">Edit</button>
+      <button class="expense-field__button expense-field__button_remove">Remove</button>
+    </div>
+  `
+
+  expenseContent.insertAdjacentHTML('beforeend', markHTML)
+  haveMark()
 }
 
 function openNote() {
@@ -51,4 +69,24 @@ function openNote() {
   }
 }
 
-export { handleFormSubmit, handleInput, renderNoteList, openNote }
+const haveMark = () => {
+  if (removeButton().length < 1) return
+
+  removeButton().forEach(button => button.addEventListener('click', removeMark))
+}
+
+function removeMark(e) {
+  const numFieldAll = document.querySelectorAll('#place')
+  const currentField = this.closest('.expense-field')
+  const currentFieldId = +currentField.id
+  const currentFieldNum = +currentField.children[0].textContent
+
+  dataNote.forEach(({ id }, i) => (id === currentFieldId ? dataNote.splice(i, 1) : 0))
+  currentField.remove()
+
+  numFieldAll.forEach((num, i) => (i + 1 > currentFieldNum ? (num.innerText = i) : 0))
+
+  console.log(numFieldAll)
+}
+
+export { handleNoteForm, handleNoteInput, addMark, openNote, haveMark, removeMark }

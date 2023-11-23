@@ -1,8 +1,14 @@
-import variables from './variables.js'
-import { handleFormSubmit, handleInput, openNote } from './expenses.js'
+import { elementDOM_var, expense_var } from './variables.js'
+import { handleNoteForm, handleNoteInput, openNote, removeMark } from './expenses.js'
+import { controllActiveTab } from './tabsController.js'
 
-const { noteForm, allNoteInput } = variables
+const { tabs } = elementDOM_var
+const { noteForm, allNoteInput } = expense_var
 
-noteForm.addEventListener('submit', handleFormSubmit)
-allNoteInput.forEach(input => input.addEventListener('input', handleInput))
+// Expenses
+noteForm.addEventListener('submit', handleNoteForm)
+allNoteInput.forEach(input => input.addEventListener('input', handleNoteInput))
 put.addEventListener('click', openNote)
+
+// Tabs controller
+tabs.forEach(tab => tab.addEventListener('click', controllActiveTab))

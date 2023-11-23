@@ -24,6 +24,11 @@ a {
   text-decoration: none;
 }
 
+nput::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 input {
   cursor: pointer;
 }
